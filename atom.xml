@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2020-11-30T09:36:24.358Z</updated>
+    <updated>2020-11-30T09:38:24.260Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -11,24 +11,10 @@
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 不吃萝卜</rights>
     <entry>
-        <title type="html"><![CDATA[test]]></title>
-        <id>https://04lm40.github.io/post/test/</id>
-        <link href="https://04lm40.github.io/post/test/">
-        </link>
-        <updated>2020-11-30T09:33:12.000Z</updated>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[阅读论文：Cross-Domain Cascaded Deep Translation]]></title>
-        <id>https://04lm40.github.io/post/yue-du-lun-wen-cross-domain-cascaded-deep-translation/</id>
-        <link href="https://04lm40.github.io/post/yue-du-lun-wen-cross-domain-cascaded-deep-translation/">
-        </link>
-        <updated>2020-11-30T07:04:17.000Z</updated>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[About me]]></title>
-        <id>https://04lm40.github.io/post/a/</id>
-        <link href="https://04lm40.github.io/post/a/">
+        <id>https://04lm40.github.io/post/about-me/</id>
+        <link href="https://04lm40.github.io/post/about-me/">
         </link>
-        <updated>2020-11-30T03:45:00.000Z</updated>
+        <updated>2020-11-30T09:37:55.000Z</updated>
     </entry>
 </feed>
