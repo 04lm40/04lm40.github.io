@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2020-11-30T11:47:46.741Z</updated>
+    <updated>2020-12-01T08:06:10.127Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://04lm40.github.io/images/avatar.png</logo>
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Cross-Domain Cascaded Deep Translation]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-cross-domain-cascaded-deep-translation/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-cross-domain-cascaded-deep-translation/">
+        </link>
+        <updated>2020-12-01T01:54:00.000Z</updated>
+        <content type="html"><![CDATA[<p>问题：无监督翻译里大多解决的是风格和外观的转换，本文考虑形状的转换。<br>
+两个域的语义相同，但外观和形状不同。一般来说是深层结构，浅层细粒度。<br>
+因此，论文在分类和图像翻译之间应用迁移学习，通过一个预训练分类网络提取编码的深层特征来学习翻译高级语义。不再是图像之间的翻译，而是特征之间的翻译。<br>
+<img src="https://04lm40.github.io//post-images/1606790175848.png" alt="" loading="lazy"><br>
+方法：deep-to-shallow<br>
+预处理：VGG-19提取5层采样特征，并归一化。<br>
+推理：逐级翻译，最后通过特征反演来获得最后图像。<br>
+<img src="https://04lm40.github.io//post-images/1606793145131.png" alt="" loading="lazy"><br>
+特征反演：通过预训练一个深层特征反演网络来可视化特征成图像，follow论文：Generating images with perceptual similarity metrics based on deep networks.<br>
+最深层翻译：CycleGAN,对抗损失（WGAN-GP），循环一致性损失，identity loss。<br>
+coarse-to-fine的条件翻译：AdaIN。如图，a<sub>i</sub>来生成每层的AdaIN参数，从而控制b<sub>i+1</sub>到b<sub>i</sub>的生成。<br>
+<img src="https://04lm40.github.io//post-images/1606793913722.png" alt="" loading="lazy"><br>
+实验：斑马到大象，斑马到长颈鹿，差别都挺大。<br>
+将原始图像和生成图像经过VGG，提取最后一层全连接层，使用t-SNE投影向量（4096）到2D。<br>
+<img src="https://04lm40.github.io//post-images/1606809231696.png" alt="" loading="lazy"><br>
+限制：1.不保留背景（因为一起编码了） 2.丢失小物体（VGG-19一般不可逆，且只能在有限类别分类） 3.翻译的小错误可能放大<br>
+验证该方法在无条件生成是否有用。（DEEP-VAE）</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[About me]]></title>
         <id>https://04lm40.github.io/post/about-me/</id>
