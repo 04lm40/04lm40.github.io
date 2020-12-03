@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2020-12-02T11:21:45.420Z</updated>
+    <updated>2020-12-03T03:08:47.437Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://04lm40.github.io/images/avatar.png</logo>
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Neural Wireframe Renderer: Learning Wireframe to Image Translations]]></title>
+        <id>https://04lm40.github.io/post/neural-yue-du-lun-wen-wireframe-renderer-learning-wireframe-to-image-translations/</id>
+        <link href="https://04lm40.github.io/post/neural-yue-du-lun-wen-wireframe-renderer-learning-wireframe-to-image-translations/">
+        </link>
+        <updated>2020-12-02T13:16:14.000Z</updated>
+        <content type="html"><![CDATA[<p>有监督，ECCV2020。<br>
+代码地址： https://github.com/YuanXue1993/WireframeRenderer<br>
+<strong>任务和问题</strong>：针对室内场景的线框到图像翻译，线框与边缘图和草图均有差异。其它翻译没有结构约束。<br>
+<strong>结构</strong>：一个编码器、一个线框解码器、一个场景图像解码器和一个判别器。学习联合表征。<br>
+<img src="https://04lm40.github.io//post-images/1606916174375.png" alt="" loading="lazy"><br>
+线框重构部分:L1损失和MS-SSIM损失。<br>
+生成场景图像部分：L1损失和感知损失。<br>
+对抗损失：LSGAN。(x,y)真，(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.67056em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span></span></span><span class="svg-align" style="width:calc(100% - 0.05556em);margin-left:0.05556em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.865em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span><span class="svg-align" style="width:calc(100% - 0.11112em);margin-left:0.11112em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span>)假。<br>
+<strong>实验</strong>： Wireframe Manipulation--改一部分也能够很好的生成，对交互式比较友好。 Color Guided Rendering--引入RGB颜色直方图引导不同颜色场景生成。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阅读论文：Informative Sample Mining Network for Multi-Domain Image-to-Image Translation]]></title>
         <id>https://04lm40.github.io/post/yue-du-lun-wen-informative-sample-mining-network-for-multi-domain-image-to-image-translation/</id>
