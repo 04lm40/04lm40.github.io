@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation | 不吃萝卜</title>
-<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1607046859792">
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1607047063764">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
@@ -12,8 +12,7 @@
 
 
     <meta name="description" content="GANHOPPER，无监督，ECCV2020。
-
-问题：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再..." />
+问题：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再几..." />
     <meta name="keywords" content="论文阅读" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -23,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://04lm40.github.io/">
-  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1607046859792" alt="">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1607047063764" alt="">
   </a>
   <h1 class="site-title">
     不吃萝卜
@@ -94,9 +93,8 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>GANHOPPER，无监督，ECCV2020。</p>
-<!-- more -->
-<p><strong>问题</strong>：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再几步后，完全像猫。<br>
+                <p>GANHOPPER，无监督，ECCV2020。<br>
+<strong>问题</strong>：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再几步后，完全像猫。<br>
 <strong>相关工作</strong>：以前的解决几何变形的方法是风格-内容、尺度分离、特征解缠等。而本文仅在图像空间。<br>
 <strong>结构</strong>：CycleGAN的两个生成器G、F，判别器<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>Y</mi></msub><mi mathvariant="normal">、</mi><msub><mi>D</mi><mi>X</mi></msub><mi mathvariant="normal">和</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">新</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">混</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">鉴</mi><mi mathvariant="normal">别</mi><mi mathvariant="normal">器</mi><msub><mi>D</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">D_{Y}、D_{X}和一个新的混合鉴别器D_{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">混</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">鉴</span><span class="mord cjk_fallback">别</span><span class="mord cjk_fallback">器</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<br>
 <img src="https://04lm40.github.io//post-images/1606998404872.png" alt="" loading="lazy"><br>
