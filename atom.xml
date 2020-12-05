@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2020-12-04T01:57:50.467Z</updated>
+    <updated>2020-12-05T01:33:50.277Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -10,6 +10,30 @@
     <logo>https://04lm40.github.io/images/avatar.png</logo>
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-semantic-relation-preserving-knowledge-distillation-for-image-to-image-translation/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-semantic-relation-preserving-knowledge-distillation-for-image-to-image-translation/">
+        </link>
+        <updated>2020-12-04T01:59:39.000Z</updated>
+        <content type="html"><![CDATA[<p>知识蒸馏，ECCV2020.<br>
+<strong>问题</strong>：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。<br>
+<strong>假设</strong>：相同语义类别的特征像素有相似的激活样式，不同语义类别的特征像素不同。<br>
+<img src="https://04lm40.github.io//post-images/1607072716913.png" alt="" loading="lazy"><br>
+<strong>Vanilla知识蒸馏</strong>：最小化GT和学生输出，最小化教师输出和学生输出。<br>
+<img src="https://04lm40.github.io//post-images/1607073235185.png" alt="" loading="lazy"><br>
+GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引入另一个极大极小问题。<br>
+<img src="https://04lm40.github.io//post-images/1607085854448.png" alt="" loading="lazy"><br>
+但这种方式没有提升性能，且训练困难、不稳定。所以考虑只在循环一致性损失，L1 norm上加入蒸馏损失。即：<br>
+<img src="https://04lm40.github.io//post-images/1607086056979.png" alt="" loading="lazy"><br>
+<strong>语义保留蒸馏损失</strong>：生成器由编码器和生成部分组成，语义关系激活矩阵A由特征编码F的外积表示。然后进行逐行L2归一化。<br>
+<img src="https://04lm40.github.io//post-images/1607087478224.png" alt="" loading="lazy"><br>
+语义保留蒸馏损失即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mi mathvariant="normal">和</mi><msub><mi>A</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">A_{t}和A_{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的L1 norm的值。<br>
+总损失：<br>
+<img src="https://04lm40.github.io//post-images/1607087704034.png" alt="" loading="lazy"><br>
+<strong>结构</strong>：教师网络和学生网络同结构但不同通道数，narrow。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation]]></title>
         <id>https://04lm40.github.io/post/yue-du-lun-wen-ganhopper-multi-hop-gan-for-unsupervised-image-to-image-translation/</id>
