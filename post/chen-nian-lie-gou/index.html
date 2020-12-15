@@ -2,19 +2,19 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>阅读论文：Cross-Domain Cascaded Deep Translation | 不吃萝卜</title>
+<title>陈年烈苟 | 不吃萝卜</title>
 <link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1608025075393">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="阅读论文：Cross-Domain Cascaded Deep Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="陈年烈苟 | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="问题：无监督翻译里大多解决的是风格和外观的转换，本文考虑形状的转换。
-两个域的语义相同，但外观和形状不同。一般来说是深层结构，浅层细粒度。
-因此，论文在分类和图像翻译之间应用迁移学习，通过一个预训练分类网络提取编码的深层特征来学习翻译高级语..." />
-    <meta name="keywords" content="论文阅读" />
+    <meta name="description" content="不问三九
+是属于陶淮南和迟骋的时光。生活有时候真的很不容易，有人爱着，就有坚持下去的勇气。不要害怕，好好长大。小时候南南和苦哥的塑料友情，分离的五年，最后的光影。
+" />
+    <meta name="keywords" content="小说" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
@@ -76,41 +76,26 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              阅读论文：Cross-Domain Cascaded Deep Translation
+              陈年烈苟
             </h2>
             <div class="post-info">
               <span>
-                2020-12-01
+                2020-12-03
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
-                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
-                  # 论文阅读
+                <a href="https://04lm40.github.io/tag/WN1mpZk_Y/" class="post-tag">
+                  # 小说
                 </a>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>问题：无监督翻译里大多解决的是风格和外观的转换，本文考虑形状的转换。<br>
-两个域的语义相同，但外观和形状不同。一般来说是深层结构，浅层细粒度。<br>
-因此，论文在分类和图像翻译之间应用迁移学习，通过一个预训练分类网络提取编码的深层特征来学习翻译高级语义。不再是图像之间的翻译，而是特征之间的翻译。<br>
-<img src="https://04lm40.github.io//post-images/1606790175848.png" alt="" loading="lazy"><br>
-方法：deep-to-shallow<br>
-预处理：VGG-19提取5层采样特征，并归一化。<br>
-推理：逐级翻译，最后通过特征反演来获得最后图像。<br>
-<img src="https://04lm40.github.io//post-images/1606793145131.png" alt="" loading="lazy"><br>
-特征反演：通过预训练一个深层特征反演网络来可视化特征成图像，follow论文：Generating images with perceptual similarity metrics based on deep networks.<br>
-最深层翻译：CycleGAN,对抗损失（WGAN-GP），循环一致性损失，identity loss。<br>
-coarse-to-fine的条件翻译：AdaIN。如图，a<sub>i</sub>来生成每层的AdaIN参数，从而控制b<sub>i+1</sub>到b<sub>i</sub>的生成。<br>
-<img src="https://04lm40.github.io//post-images/1606793913722.png" alt="" loading="lazy"><br>
-实验：斑马到大象，斑马到长颈鹿，差别都挺大。<br>
-将原始图像和生成图像经过VGG，提取最后一层全连接层，使用t-SNE投影向量（4096）到2D。<br>
-<img src="https://04lm40.github.io//post-images/1606809231696.png" alt="" loading="lazy"><br>
-限制：1.不保留背景（因为一起编码了） 2.丢失小物体（VGG-19一般不可逆，且只能在有限类别分类） 3.翻译的小错误可能放大<br>
-验证该方法在无条件生成是否有用。（DEEP-VAE）</p>
+                <p>不问三九<br>
+是属于陶淮南和迟骋的时光。生活有时候真的很不容易，有人爱着，就有坚持下去的勇气。不要害怕，好好长大。小时候南南和苦哥的塑料友情，分离的五年，最后的光影。</p>
 
               </div>
               <div class="toc-container">
@@ -123,9 +108,9 @@ coarse-to-fine的条件翻译：AdaIN。如图，a<sub>i</sub>来生成每层的
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://04lm40.github.io/post/about-me/">
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-ganhopper-multi-hop-gan-for-unsupervised-image-to-image-translation/">
               <h3 class="post-title">
-                About me
+                阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation
               </h3>
             </a>
           </div>
