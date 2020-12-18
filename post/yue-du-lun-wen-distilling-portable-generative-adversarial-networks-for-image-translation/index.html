@@ -2,18 +2,19 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜</title>
+<title>阅读论文：Distilling portable Generative Adversarial Networks for Image Translation | 不吃萝卜</title>
 <link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1608282031762">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：Distilling portable Generative Adversarial Networks for Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="知识蒸馏，ECCV2020.
-问题：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。
-假设：相同语义类别的..." />
+    <meta name="description" content="知识蒸馏，AAAI2020。
+问题：参数多，但不能直接用分类和目标检测中的压缩方法到GAN网络中。
+原因：1.参数太多，不知道多余的是哪个。2.没有Ground Truth。3.GAN和CNN结构不同（有生成器和判别器），训练机制不同。
+架..." />
     <meta name="keywords" content="论文阅读" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -76,11 +77,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation
+              阅读论文：Distilling portable Generative Adversarial Networks for Image Translation
             </h2>
             <div class="post-info">
               <span>
-                2020-12-04
+                2020-12-18
               </span>
               <span>
                 2 min read
@@ -94,22 +95,28 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>知识蒸馏，ECCV2020.<br>
-<strong>问题</strong>：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。<br>
-<strong>假设</strong>：相同语义类别的特征像素有相似的激活样式，不同语义类别的特征像素不同。<br>
-<img src="https://04lm40.github.io//post-images/1607072716913.png" alt="" loading="lazy"><br>
-<strong>Vanilla知识蒸馏</strong>：最小化GT和学生输出，最小化教师输出和学生输出。<br>
-<img src="https://04lm40.github.io//post-images/1607073235185.png" alt="" loading="lazy"><br>
-GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引入另一个极大极小问题。<br>
-<img src="https://04lm40.github.io//post-images/1607085854448.png" alt="" loading="lazy"><br>
-但这种方式没有提升性能，且训练困难、不稳定。所以考虑只在循环一致性损失，L1 norm上加入蒸馏损失。即：<br>
-<img src="https://04lm40.github.io//post-images/1607086056979.png" alt="" loading="lazy"><br>
-<strong>语义保留蒸馏损失</strong>：生成器由编码器和生成部分组成，语义关系激活矩阵A由特征编码F的外积表示。然后进行逐行L2归一化。<br>
-<img src="https://04lm40.github.io//post-images/1607087478224.png" alt="" loading="lazy"><br>
-语义保留蒸馏损失即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mi mathvariant="normal">和</mi><msub><mi>A</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">A_{t}和A_{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的L1 norm的值。<br>
+                <p>知识蒸馏，AAAI2020。<br>
+<strong>问题</strong>：参数多，但不能直接用分类和目标检测中的压缩方法到GAN网络中。<br>
+<strong>原因</strong>：1.参数太多，不知道多余的是哪个。2.没有Ground Truth。3.GAN和CNN结构不同（有生成器和判别器），训练机制不同。<br>
+<strong>架构</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608280335612.png" alt="" loading="lazy"><br>
 总损失：<br>
-<img src="https://04lm40.github.io//post-images/1607087704034.png" alt="" loading="lazy"><br>
-<strong>结构</strong>：教师网络和学生网络同结构但不同通道数，narrow。</p>
+<img src="https://04lm40.github.io//post-images/1608280428667.png" alt="" loading="lazy"><br>
+教师生成器和学生生成器生成图像间的像素级损失：<br>
+<img src="https://04lm40.github.io//post-images/1608280515027.png" alt="" loading="lazy"><br>
+但上述会造成模糊，于是加入感知损失，但不同于用VGG-19提取特征，这里是教师判别器的前几层。<br>
+<img src="https://04lm40.github.io//post-images/1608280632893.png" alt="" loading="lazy"><br>
+蒸馏学生判别器：将教师判别器的生成结果也作为True。<br>
+<img src="https://04lm40.github.io//post-images/1608280920658.png" alt="" loading="lazy"><br>
+Triplet loss：教师生成器生成的图像与真实图像之间的距离应小于真实图像与学生生成器生成的图像之间的距离。<br>
+<img src="https://04lm40.github.io//post-images/1608281025322.png" alt="" loading="lazy"><br>
+[·]+ = max(·, 0)，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>D</mi><mo stretchy="true">^</mo></mover><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">\widehat{D}_{S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.07333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.92333em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span><span class="svg-align" style="width:calc(100% - 0.11112em);margin-left:0.11112em;top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是学生判别器移除最后一层。该公式的优点是鉴别器可以为真实样本构造一个比传统损失更具体的流形，然后生成器将获得更高的性能在更强的鉴别器的帮助下。<br>
+<strong>算法</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608281360161.png" alt="" loading="lazy"><br>
+<strong>实验</strong>：语义图-真实图（Cityscapes），斑马-马等等。学生生成器大概为1/2或1/4的教师生成器的通道数即可。<br>
+<strong>定量</strong>：FCN-scores（Per-pixel acc. &amp;Per-class acc. &amp;Class IOU）<br>
+<strong>消融</strong>：探讨损失的影响。</p>
 
               </div>
               <div class="toc-container">
@@ -122,9 +129,9 @@ GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引�
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://04lm40.github.io/post/chen-nian-lie-gou/">
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-two-stream-appearance-transfer-network-for-person-image-generation/">
               <h3 class="post-title">
-                陈年烈苟
+                阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation
               </h3>
             </a>
           </div>
