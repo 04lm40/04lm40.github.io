@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2020-12-22T09:29:24.520Z</updated>
+    <updated>2020-12-29T03:39:35.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://04lm40.github.io/images/avatar.png</logo>
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/">
+        </link>
+        <updated>2020-12-28T11:08:47.000Z</updated>
+        <content type="html"><![CDATA[<p>MSG-GAN，高分辨率图像生成，训练策略。<br>
+<strong>代码</strong>：<a href="https://github.com/akanimax/msg-stylegan-tf">https://github.com/akanimax/msg-stylegan-tf</a><br>
+<strong>问题</strong>：1.模式崩溃（当生成器网络仅能够捕获数据分布中存在方差的子集时，就会发生模式坍塌的问题。）。2.<strong>训练不稳定</strong>（由于当真实和虚假的分布空间之间存在实质性的重叠时，从判别器到生成器的随机（非信息性）梯度传递导致的）。<br>
+<strong>优势</strong>：解决GAN训练不稳定的问题。避免跨多尺度生成的图像需要显式的颜色一致性正则化项（多尺度下一般是需要的）。对超参数不敏感。<br>
+<strong>架构</strong>：应用于两个基本架构ProGAN和Style-GAN（除混合正则化）。<br>
+<img src="https://04lm40.github.io//post-images/1609163468813.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：ProGAN（WGAN-GP）和Style-GAN（1-sided GP的非饱和GAN损失）<br>
+<strong>实验细节</strong>：使用相同的初始潜在维数 512，从标准正态分布 N（0，I）提取，然后进行超球面归一化。超参数相同（lr=0.003）。还扩展了MinBatchStdDev 技术，将一批激活的平均标准偏差馈送到判别器，以改善样本多样性。<br>
+<strong>结果</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609163829200.png" alt="" loading="lazy"><br>
+<strong>稳定性</strong>：对所有分辨率均收敛，在每种分辨率下同时发生训练迭代。具有高稳定性，有助于压缩训练时间。<br>
+<img src="https://04lm40.github.io//post-images/1609163887077.png" alt="" loading="lazy"><br>
+<strong>学习率鲁棒性</strong>：学习率并不很大的影响。<br>
+<strong>消融</strong>：多尺度梯度连接，连接函数的变体。<br>
+<strong>局限和未来工作</strong>：1.使用渐进式训练，以较低的分辨率进行的第一组迭代要快得多，而 MSG-GAN 的每次迭代花费的时间相同。2.在 FFHQ 和 CelebA-HQ 的面部数据集上，我们没有超过 StyleGAN 的生成质量。3.在 MSG-StyleGAN 中进行了多尺度修改，无法利用混合正则化技巧。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs]]></title>
         <id>https://04lm40.github.io/post/yue-du-lun-wen-gan-compression-efficient-architectures-for-interactive-conditional-gans/</id>
@@ -208,25 +231,6 @@ Smoothness loss：惩罚n和n-1 hop之间的差异，使每次变化较小，最
 <strong>训练过程</strong>：每次hop都是同一个生成器。算法如图：<br>
 <img src="https://04lm40.github.io//post-images/1606999845996.png" alt="" loading="lazy"><br>
 <strong>Future work</strong>：自动学习hop数。所有hop使用同样的G，能否在考虑内存的情况下改进。与多模态结合。将hop信息one-hot编码作为生成器的输入。生成在给定图像域之外的有意义的extrapolation sequences，以产生创造性和新颖的输出。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[阅读论文：Neural Wireframe Renderer: Learning Wireframe to Image Translations]]></title>
-        <id>https://04lm40.github.io/post/neural-yue-du-lun-wen-wireframe-renderer-learning-wireframe-to-image-translations/</id>
-        <link href="https://04lm40.github.io/post/neural-yue-du-lun-wen-wireframe-renderer-learning-wireframe-to-image-translations/">
-        </link>
-        <updated>2020-12-02T13:16:14.000Z</updated>
-        <content type="html"><![CDATA[<p>有监督，ECCV2020。<br>
-代码地址： https://github.com/YuanXue1993/WireframeRenderer<br>
-<strong>任务和问题</strong>：针对室内场景的线框到图像翻译，线框与边缘图和草图均有差异。其它翻译没有结构约束。<br>
-<strong>结构</strong>：一个编码器、一个线框解码器、一个场景图像解码器和一个判别器。学习联合表征。<br>
-<img src="https://04lm40.github.io//post-images/1606916174375.png" alt="" loading="lazy"><br>
-线框重构部分:L1损失和MS-SSIM损失。<br>
-生成场景图像部分：L1损失和感知损失。<br>
-对抗损失：LSGAN。(x,y)真，(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>x</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.67056em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">x</span></span></span><span class="svg-align" style="width:calc(100% - 0.05556em);margin-left:0.05556em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
-c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>y</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.865em;vertical-align:-0.19444em;"></span><span class="mord accent"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span><span class="svg-align" style="width:calc(100% - 0.11112em);margin-left:0.11112em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
-c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.19444em;"><span></span></span></span></span></span></span></span></span>)假。<br>
-<strong>实验</strong>： Wireframe Manipulation--改一部分也能够很好的生成，对交互式比较友好。 Color Guided Rendering--引入RGB颜色直方图引导不同颜色场景生成。</p>
 ]]></content>
     </entry>
 </feed>
