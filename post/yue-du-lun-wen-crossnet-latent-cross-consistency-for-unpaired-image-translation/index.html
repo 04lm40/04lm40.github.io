@@ -2,18 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜</title>
+<title>阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation | 不吃萝卜</title>
 <link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1609748183277">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="知识蒸馏，ECCV2020.
-问题：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。
-假设：相同语义类别的..." />
+    <meta name="description" content="CrossNet，无监督，WACV2020.
+问题:无监督需要的监督信息少，但会使翻译问题高度受限；模式崩溃等问题。
+架构：Resnet-9block，隐代码翻译器是9 residual blocks。
+
+损失：
+
+Latent Cross..." />
     <meta name="keywords" content="论文阅读" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -76,14 +80,14 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation
+              阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation
             </h2>
             <div class="post-info">
               <span>
-                2020-12-04
+                2021-01-04
               </span>
               <span>
-                2 min read
+                1 min read
               </span>
               
                 <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
@@ -94,22 +98,26 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>知识蒸馏，ECCV2020.<br>
-<strong>问题</strong>：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。<br>
-<strong>假设</strong>：相同语义类别的特征像素有相似的激活样式，不同语义类别的特征像素不同。<br>
-<img src="https://04lm40.github.io//post-images/1607072716913.png" alt="" loading="lazy"><br>
-<strong>Vanilla知识蒸馏</strong>：最小化GT和学生输出，最小化教师输出和学生输出。<br>
-<img src="https://04lm40.github.io//post-images/1607073235185.png" alt="" loading="lazy"><br>
-GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引入另一个极大极小问题。<br>
-<img src="https://04lm40.github.io//post-images/1607085854448.png" alt="" loading="lazy"><br>
-但这种方式没有提升性能，且训练困难、不稳定。所以考虑只在循环一致性损失，L1 norm上加入蒸馏损失。即：<br>
-<img src="https://04lm40.github.io//post-images/1607086056979.png" alt="" loading="lazy"><br>
-<strong>语义保留蒸馏损失</strong>：生成器由编码器和生成部分组成，语义关系激活矩阵A由特征编码F的外积表示。然后进行逐行L2归一化。<br>
-<img src="https://04lm40.github.io//post-images/1607087478224.png" alt="" loading="lazy"><br>
-语义保留蒸馏损失即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mi mathvariant="normal">和</mi><msub><mi>A</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">A_{t}和A_{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的L1 norm的值。<br>
-总损失：<br>
-<img src="https://04lm40.github.io//post-images/1607087704034.png" alt="" loading="lazy"><br>
-<strong>结构</strong>：教师网络和学生网络同结构但不同通道数，narrow。</p>
+                <p>CrossNet，无监督，WACV2020.<br>
+<strong>问题</strong>:无监督需要的监督信息少，但会使翻译问题高度受限；模式崩溃等问题。<br>
+<strong>架构</strong>：Resnet-9block，隐代码翻译器是9 residual blocks。<br>
+<img src="https://04lm40.github.io//post-images/1609746734616.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746895444.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Identity Loss</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746981364.png" alt="" loading="lazy"><br>
+可见示意图(a)。另外，仿照普通的identity loss（无cross），加入下式损失：<br>
+<img src="https://04lm40.github.io//post-images/1609747153604.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Translation Consistency</strong>：可见示意图(b)<br>
+<img src="https://04lm40.github.io//post-images/1609747267836.png" alt="" loading="lazy"><br>
+<strong>Latent Cycle-Consistency</strong>：保证双向，避免崩溃，可见示意图(c)<br>
+<img src="https://04lm40.github.io//post-images/1609747663833.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：另，对抗损失是LSGAN。<br>
+<img src="https://04lm40.github.io//post-images/1609747707866.png" alt="" loading="lazy"><br>
+<strong>消融</strong>：各种损失<br>
+<img src="https://04lm40.github.io//post-images/1609747807778.png" alt="" loading="lazy"><br>
+<strong>任务</strong>：苹果-橘子，夏天-冬天，马-斑马，镜面-漫射，手机-单反，语义前景提取。<br>
+<strong>未来工作</strong>：本文的所有损失是对称约束，但在某些任务中非对称约束更合适。</p>
 
               </div>
               <div class="toc-container">
@@ -122,9 +130,9 @@ GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引�
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://04lm40.github.io/post/chen-nian-lie-gou/">
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/">
               <h3 class="post-title">
-                陈年烈苟
+                阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks
               </h3>
             </a>
           </div>
