@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://04lm40.github.io/</id>
+    <title>不吃萝卜</title>
+    <updated>2021-03-22T09:05:17.722Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://04lm40.github.io/"/>
+    <link rel="self" href="https://04lm40.github.io/atom.xml"/>
+    <subtitle>想要成为dancing machine</subtitle>
+    <logo>https://04lm40.github.io/images/avatar.png</logo>
+    <icon>https://04lm40.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2021, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[test1]]></title>
+        <id>https://04lm40.github.io/post/test1/</id>
+        <link href="https://04lm40.github.io/post/test1/">
+        </link>
+        <updated>2021-03-22T09:01:27.000Z</updated>
+        <content type="html"><![CDATA[<p>test</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[test]]></title>
+        <id>https://04lm40.github.io/post/test/</id>
+        <link href="https://04lm40.github.io/post/test/">
+        </link>
+        <updated>2021-03-22T08:48:00.000Z</updated>
+        <content type="html"><![CDATA[<p>test</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[限定花期]]></title>
+        <id>https://04lm40.github.io/post/xian-ding-hua-qi/</id>
+        <link href="https://04lm40.github.io/post/xian-ding-hua-qi/">
+        </link>
+        <updated>2021-03-22T08:00:28.000Z</updated>
+        <content type="html"><![CDATA[<p>世上本无事，庸人自扰之</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：StarGAN v2: Diverse Image Synthesis for Multiple Domains]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-stargan-v2-diverse-image-synthesis-for-multiple-domains/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-stargan-v2-diverse-image-synthesis-for-multiple-domains/">
+        </link>
+        <updated>2021-01-06T08:47:09.000Z</updated>
+        <content type="html"><![CDATA[<p>StarGAN V2，多域生成，CVPR2020.<br>
+<strong>代码</strong>：<a href="https://github.com/clovaai/stargan-v2">https://github.com/clovaai/stargan-v2</a><br>
+<strong>问题</strong>:好的图像-图像翻译模型需要满足生成图像多样性和多域上有可伸缩性。但已存在的方法只能解决其中之一的问题，该方法可同时满足以上两个条件。<br>
+<strong>StarGAN问题</strong>：仍是学习每个域的确定性映射，它不能捕捉数据分布的多模态性质。这一限制来自每个域都由预定的标签表示的事实。生成器接收一个固定的标签（例如，one-hot向量）作为输入，因此它不可避免地在给定一个源图像时，支持每个域导出相同的输出。<br>
+<strong>网络</strong>：生成器，映射网络，样式编码，判别器<br>
+<img src="https://04lm40.github.io//post-images/1609923510000.png" alt="" loading="lazy"><br>
+<strong>生成器</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">G(x,s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span>，输入图像<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，域特定样式编码<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>（来自映射网络F，或样式编码器E）。使用AdaIN注射<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>到G。s消除了域标签的必要性。<br>
+<img src="https://04lm40.github.io//post-images/1609932110003.png" alt="" loading="lazy"><br>
+<strong>映射网络</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi>F</mi><mi>y</mi></msub><mo>(</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s=F_{y}(z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>，F是一个MLP，有多个输出，对应提供多个域的样式编码。无像素级和特征级归一化。<br>
+<img src="https://04lm40.github.io//post-images/1609924873028.png" alt="" loading="lazy"><br>
+<strong>样式编码</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi>E</mi><mi>y</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s=E_{y}(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，x是参考图像。<br>
+<strong>判别器</strong>：一个多任务判别器，可以转换全局结构。与样式编码结构同，如下：<br>
+<img src="https://04lm40.github.io//post-images/1609924957556.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：对抗损失，样式重构，样式多样，保留原特征（循环一致）<br>
+<img src="https://04lm40.github.io//post-images/1609925584947.png" alt="" loading="lazy"><br>
+<strong>对抗损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925450158.png" alt="" loading="lazy"><br>
+<strong>样式重构</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925468888.png" alt="" loading="lazy"><br>
+<strong>样式多样</strong>：最大化下式<br>
+<img src="https://04lm40.github.io//post-images/1609925510032.png" alt="" loading="lazy"><br>
+<strong>保留原特征</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925529794.png" alt="" loading="lazy"><br>
+<strong>数据集</strong>：CelebA-HQ， AFHQ<br>
+<strong>评估指标</strong>：FID，LPIPS，AMT<br>
+<strong>效果</strong>：可以合成反映参考图像不同风格的图像，包括发型，化妆，胡须和年龄，而不损害源特征。结果图像跟随参考图像的品种和头发，保持源图像的姿态。<br>
+<strong>对比方法</strong>：MUNIT，DRIT，MSGAN。缺点：对比方法缺乏多样性，遭受模式崩溃，且很难改变全局上的特征。<br>
+<strong>讨论StarGAN V2成功的原因</strong>：<br>
+（1）遵循StyleGAN的洞察力，我们的风格空间是由高斯分布的非线性变换产生的。与假设固定的先验分布相比，这为我们的模型提供了更多的灵活性。<br>
+（2）样式编码是由多分支编码器和映射网络单独生成的。通过这样做，我们的生成器只能专注于使用样式编码，它的特定领域的信息已经由编码器或映射网络处理。<br>
+（3）我们的模块受益于充分利用来自多个领域的训练数据。通过设计，每个模块的共享部分应该学习区域不变特征，从而产生正则化效果鼓励对未见样本进行更好的泛化。<br>
+<img src="https://04lm40.github.io//post-images/1609932009010.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-crossnet-latent-cross-consistency-for-unpaired-image-translation/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-crossnet-latent-cross-consistency-for-unpaired-image-translation/">
+        </link>
+        <updated>2021-01-04T07:46:41.000Z</updated>
+        <content type="html"><![CDATA[<p>CrossNet，无监督，WACV2020.<br>
+<strong>问题</strong>:无监督需要的监督信息少，但会使翻译问题高度受限；模式崩溃等问题。<br>
+<strong>架构</strong>：Resnet-9block，隐代码翻译器是9 residual blocks。<br>
+<img src="https://04lm40.github.io//post-images/1609746734616.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746895444.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Identity Loss</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746981364.png" alt="" loading="lazy"><br>
+可见示意图(a)。另外，仿照普通的identity loss（无cross），加入下式损失：<br>
+<img src="https://04lm40.github.io//post-images/1609747153604.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Translation Consistency</strong>：可见示意图(b)<br>
+<img src="https://04lm40.github.io//post-images/1609747267836.png" alt="" loading="lazy"><br>
+<strong>Latent Cycle-Consistency</strong>：保证双向，避免崩溃，可见示意图(c)<br>
+<img src="https://04lm40.github.io//post-images/1609747663833.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：另，对抗损失是LSGAN。<br>
+<img src="https://04lm40.github.io//post-images/1609747707866.png" alt="" loading="lazy"><br>
+<strong>消融</strong>：各种损失<br>
+<img src="https://04lm40.github.io//post-images/1609747807778.png" alt="" loading="lazy"><br>
+<strong>任务</strong>：苹果-橘子，夏天-冬天，马-斑马，镜面-漫射，手机-单反，语义前景提取。<br>
+<strong>未来工作</strong>：本文的所有损失是对称约束，但在某些任务中非对称约束更合适。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/">
+        </link>
+        <updated>2020-12-28T11:08:47.000Z</updated>
+        <content type="html"><![CDATA[<p>MSG-GAN，高分辨率图像生成，训练策略。<br>
+<strong>代码</strong>：<a href="https://github.com/akanimax/msg-stylegan-tf">https://github.com/akanimax/msg-stylegan-tf</a><br>
+<strong>问题</strong>：1.模式崩溃（当生成器网络仅能够捕获数据分布中存在方差的子集时，就会发生模式坍塌的问题。）。2.<strong>训练不稳定</strong>（由于当真实和虚假的分布空间之间存在实质性的重叠时，从判别器到生成器的随机（非信息性）梯度传递导致的）。<br>
+<strong>优势</strong>：解决GAN训练不稳定的问题。避免跨多尺度生成的图像需要显式的颜色一致性正则化项（多尺度下一般是需要的）。对超参数不敏感。<br>
+<strong>架构</strong>：应用于两个基本架构ProGAN和Style-GAN（除混合正则化）。<br>
+<img src="https://04lm40.github.io//post-images/1609163468813.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：ProGAN（WGAN-GP）和Style-GAN（1-sided GP的非饱和GAN损失）<br>
+<strong>实验细节</strong>：使用相同的初始潜在维数 512，从标准正态分布 N（0，I）提取，然后进行超球面归一化。超参数相同（lr=0.003）。还扩展了MinBatchStdDev 技术，将一批激活的平均标准偏差馈送到判别器，以改善样本多样性。<br>
+<strong>结果</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609163829200.png" alt="" loading="lazy"><br>
+<strong>稳定性</strong>：对所有分辨率均收敛，在每种分辨率下同时发生训练迭代。具有高稳定性，有助于压缩训练时间。<br>
+<img src="https://04lm40.github.io//post-images/1609163887077.png" alt="" loading="lazy"><br>
+<strong>学习率鲁棒性</strong>：学习率并不很大的影响。<br>
+<strong>消融</strong>：多尺度梯度连接，连接函数的变体。<br>
+<strong>局限和未来工作</strong>：1.使用渐进式训练，以较低的分辨率进行的第一组迭代要快得多，而 MSG-GAN 的每次迭代花费的时间相同。2.在 FFHQ 和 CelebA-HQ 的面部数据集上，我们没有超过 StyleGAN 的生成质量。3.在 MSG-StyleGAN 中进行了多尺度修改，无法利用混合正则化技巧。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-gan-compression-efficient-architectures-for-interactive-conditional-gans/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-gan-compression-efficient-architectures-for-interactive-conditional-gans/">
+        </link>
+        <updated>2020-12-22T07:53:26.000Z</updated>
+        <content type="html"><![CDATA[<p>GAN Compression，知识蒸馏，CVPR2020.<br>
+代码：<a href="https://github.com/mit-han-lab/gan-compression">https://github.com/mit-han-lab/gan-compression</a><br>
+<strong>问题</strong>:边缘设备内存少，计算慢。不能用CNN压缩方法原因：1.GAN训练不稳定。2.生成器结构不同。<br>
+<strong>损失</strong>：重构、对抗、蒸馏。<br>
+<strong>统一未配对和配对数据</strong>：即重构损失里（L1-norm），有监督用GT，而无监督用生成器的输出，分别与学生生成器的输出计算像素级差值。<br>
+<strong>继承教师判别器</strong>：仍使用教师判别器里的权重，并与学生生成器一起fine-tune学生判别器。随机初始化判别器会导致训练不稳定及图像质量下降等问题。<br>
+<strong>中间特征蒸馏</strong>：匹配教师生成器的中间表征，其中，G()学生生成器，G'()教师生成器，f卷积层（1x1）。<br>
+<img src="https://04lm40.github.io//post-images/1608627024815.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608627237122.png" alt="" loading="lazy"><br>
+<strong>卷积分解和层灵敏度</strong>：采用卷积的分解形式（depthwise+pointwise）。然而直接用分解卷积会伤害图像质量，且层敏感度也不一样。因此，文中只分解resBlock层。<br>
+<strong>NAS自动裁剪通道</strong>：采用通道剪枝，减少通道数。每个卷积层从8的倍数中选取。<br>
+<strong>解耦训练和搜索</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608627805239.png" alt="" loading="lazy"><br>
+首先训练一个支持不同通道数量的&quot;once-for-all&quot;网络。不同通道数量的每个子网络都受到同样的训练，可以独立操作。子网络与“once-for-all”网络共享权重。<br>
+<img src="https://04lm40.github.io//post-images/1608628605209.png" alt="" loading="lazy"><br>
+在每个训练步骤中，我们随机抽取具有一定通道数配置的子网络，计算输出和梯度，并使用我们的目标函数更新提取的权重。由于前几个通道的权重更新更频繁，它们在所有权重中起着更关键的作用。在“once-for-all”网络训练后，我们通过直接评估每个候选子网络在验证集上的性能来找到最佳的子网络。由于“once-for-all”网络是通过权值共享进行彻底训练的，因此不需要微调。 这近似于模型从零开始训练时的性能。这样，我们就可以解耦生成器体系结构的训练和搜索：我们只需要训练一次，但我们可以在不需要进一步训练的情况下评估所有可能的通道配置然后选择最好的一个作为搜索结果。 可选地，我们对选定的体系结构进行微调，以进一步提高性能。<br>
+<strong>实验</strong>：模型：CycleGAN、pix2pix、GauGAN。数据集：Edges2shoes、Cityscapes、horse2zebra、map2aerial photo。<br>
+<img src="https://04lm40.github.io//post-images/1608629014800.png" alt="" loading="lazy"><br>
+<strong>硬件</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608629114337.png" alt="" loading="lazy"><br>
+<strong>消融</strong>：无监督到有监督转换的优势，中间特征蒸馏和继承教师生成器的有效性，分解卷积的有效性。<br>
+<strong>未来方向</strong>：降低模型延迟和高效的生成视频模型架构。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[香水]]></title>
+        <id>https://04lm40.github.io/post/xiang-shui/</id>
+        <link href="https://04lm40.github.io/post/xiang-shui/">
+        </link>
+        <updated>2020-12-18T09:10:35.000Z</updated>
+        <content type="html"><![CDATA[<p>新买的香水小样也太难闻了，就那么一点点，熏了我一下午，鼻子要失灵了。再看名字买香水我就是傻子。<br>
+😢</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Distilling portable Generative Adversarial Networks for Image Translation]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-distilling-portable-generative-adversarial-networks-for-image-translation/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-distilling-portable-generative-adversarial-networks-for-image-translation/">
+        </link>
+        <updated>2020-12-18T02:32:11.000Z</updated>
+        <content type="html"><![CDATA[<p>知识蒸馏，AAAI2020。<br>
+<strong>问题</strong>：参数多，但不能直接用分类和目标检测中的压缩方法到GAN网络中。<br>
+<strong>原因</strong>：1.参数太多，不知道多余的是哪个。2.没有Ground Truth。3.GAN和CNN结构不同（有生成器和判别器），训练机制不同。<br>
+<strong>架构</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608280335612.png" alt="" loading="lazy"><br>
+总损失：<br>
+<img src="https://04lm40.github.io//post-images/1608280428667.png" alt="" loading="lazy"><br>
+教师生成器和学生生成器生成图像间的像素级损失：<br>
+<img src="https://04lm40.github.io//post-images/1608280515027.png" alt="" loading="lazy"><br>
+但上述会造成模糊，于是加入感知损失，但不同于用VGG-19提取特征，这里是教师判别器的前几层。<br>
+<img src="https://04lm40.github.io//post-images/1608280632893.png" alt="" loading="lazy"><br>
+蒸馏学生判别器：将教师判别器的生成结果也作为True。<br>
+<img src="https://04lm40.github.io//post-images/1608280920658.png" alt="" loading="lazy"><br>
+Triplet loss：教师生成器生成的图像与真实图像之间的距离应小于真实图像与学生生成器生成的图像之间的距离。<br>
+<img src="https://04lm40.github.io//post-images/1608281025322.png" alt="" loading="lazy"><br>
+[·]+ = max(·, 0)，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mover accent="true"><mi>D</mi><mo stretchy="true">^</mo></mover><mi>S</mi></msub></mrow><annotation encoding="application/x-tex">\widehat{D}_{S}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.07333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.92333em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span></span></span><span class="svg-align" style="width:calc(100% - 0.11112em);margin-left:0.11112em;top:-3.6833299999999998em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.05764em;">S</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>是学生判别器移除最后一层。该公式的优点是鉴别器可以为真实样本构造一个比传统损失更具体的流形，然后生成器将获得更高的性能在更强的鉴别器的帮助下。<br>
+<strong>算法</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608281360161.png" alt="" loading="lazy"><br>
+<strong>实验</strong>：语义图-真实图（Cityscapes），斑马-马等等。学生生成器大概为1/2或1/4的教师生成器的通道数即可。<br>
+<strong>定量</strong>：FCN-scores（Per-pixel acc. &amp;Per-class acc. &amp;Class IOU）<br>
+<strong>消融</strong>：探讨损失的影响。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-two-stream-appearance-transfer-network-for-person-image-generation/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-two-stream-appearance-transfer-network-for-person-image-generation/">
+        </link>
+        <updated>2020-12-11T07:13:09.000Z</updated>
+        <content type="html"><![CDATA[<p>2s-ATN，有监督，arxiv, 2011.04181v1.<br>
+<strong>问题</strong>：由于CNN是由空间局部算子和翻译等变量算子组成的（卷积、池化等），它们没有明确的机制去解决身体关节变形。以前的解决方式有两种：1.参数几何变换，如用仿射变换，但不能处理遮挡或平面外旋转问题。2.非参数密集流，但流场也是由CNN预测的，它不能解释大的或非局部的移动。<br>
+<strong>2s-ATN</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1607671836019.png" alt="" loading="lazy"><br>
+<strong>外观转换模块（AT-module）</strong>:<br>
+<img src="https://04lm40.github.io//post-images/1607671926123.png" alt="" loading="lazy"><br>
+两流特征融合模块：实验得在该网络下用concatenation比sum好。<br>
+<strong>损失</strong>：对抗损失，L1-norm，感知损失（conv1_2 layer）<br>
+<strong>判别器</strong>:外观判别器和形状判别器。<br>
+外观判别器决定（source image，target image）和（source image，generated image）的真/假。<br>
+形状判别器决定（target pose，target image）和（target pose，generated image）真/假。<br>
+<strong>数据集</strong>：Market-1501（263632，12000）和DeepFashion（101966，8750）。<br>
+<strong>指标</strong>：SSIM，IS，Mask-SSIM，Mask-IS，PCKh score（形状一致性）。<br>
+<strong>消融</strong>：AT-module的影响，两流特征融合模块的影响，AT-blocks的数量的影响（9最佳）。</p>
+<p>PCKh score：Progressive pose attention transfer for person image generation</p>
+]]></content>
+    </entry>
+</feed>

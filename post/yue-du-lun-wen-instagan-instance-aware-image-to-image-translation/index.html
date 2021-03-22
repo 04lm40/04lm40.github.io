@@ -1,0 +1,214 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：INSTAGAN: INSTANCE-AWARE IMAGE-TO-IMAGE TRANSLATION | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1616403909201">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：INSTAGAN: INSTANCE-AWARE IMAGE-TO-IMAGE TRANSLATION | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="InstaGAN，无监督，mask控制，ICLR2019。
+代码：https://github.com/sangwoomo/instagan
+问题：多目标实例生成，大的形状变化。
+贡献:
+1.一个图像+多实例属性的翻译神经架构
+2.内容保留..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1616403909201" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://04lm40.github.io/post/about-me" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：INSTAGAN: INSTANCE-AWARE IMAGE-TO-IMAGE TRANSLATION
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-07
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>InstaGAN，无监督，mask控制，ICLR2019。<br>
+代码：<a href="https://github.com/sangwoomo/instagan">https://github.com/sangwoomo/instagan</a><br>
+<strong>问题</strong>：多目标实例生成，大的形状变化。<br>
+<strong>贡献</strong>:<br>
+1.一个图像+多实例属性的翻译神经架构<br>
+2.内容保留损失<br>
+3.一种顺序小批量推理/训练技术<br>
+<strong>结构</strong>：特征提取模块，图像生成模块，属性生成模块。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>a</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(x, a)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">a</span><span class="mclose">)</span></span></span></span>--&gt;<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msup><mi>y</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msup><mi>b</mi><mo mathvariant="normal">′</mo></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">({y}&#x27;, {b}&#x27;)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord"><span class="mord mathdefault">b</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><br>
+<img src="https://04lm40.github.io//post-images/1607601749701.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：GAN（LSGAN）+内容损失（循环一致性、identity loss、内容保留损失）<br>
+内容保留损失：保留背景，只翻译实例。<br>
+<img src="https://04lm40.github.io//post-images/1607602720364.png" alt="" loading="lazy"><br>
+<strong>顺序小批量翻译</strong>：节约内存<br>
+<img src="https://04lm40.github.io//post-images/1607602877152.png" alt="" loading="lazy"><br>
+最好最后翻译小的实例，以免其被覆盖掉。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-contrastive-learning-for-unpaired-image-to-image-translation/">
+              <h3 class="post-title">
+                阅读论文：Contrastive Learning for Unpaired Image-to-Image Translation
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '313f4a57a834ad08923d',
+    clientSecret: '2c7619859d342e28e337f4fade597552943e83ff',
+    repo: '04lm40.github.io',
+    owner: '04lm40',
+    admin: ['04lm40'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

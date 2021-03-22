@@ -1,0 +1,228 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：StarGAN v2: Diverse Image Synthesis for Multiple Domains | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1616403909201">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：StarGAN v2: Diverse Image Synthesis for Multiple Domains | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="StarGAN V2，多域生成，CVPR2020.
+代码：https://github.com/clovaai/stargan-v2
+问题:好的图像-图像翻译模型需要满足生成图像多样性和多域上有可伸缩性。但已存在的方法只能解决其中之一的问题..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1616403909201" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://04lm40.github.io/post/about-me" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：StarGAN v2: Diverse Image Synthesis for Multiple Domains
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-01-06
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>StarGAN V2，多域生成，CVPR2020.<br>
+<strong>代码</strong>：<a href="https://github.com/clovaai/stargan-v2">https://github.com/clovaai/stargan-v2</a><br>
+<strong>问题</strong>:好的图像-图像翻译模型需要满足生成图像多样性和多域上有可伸缩性。但已存在的方法只能解决其中之一的问题，该方法可同时满足以上两个条件。<br>
+<strong>StarGAN问题</strong>：仍是学习每个域的确定性映射，它不能捕捉数据分布的多模态性质。这一限制来自每个域都由预定的标签表示的事实。生成器接收一个固定的标签（例如，one-hot向量）作为输入，因此它不可避免地在给定一个源图像时，支持每个域导出相同的输出。<br>
+<strong>网络</strong>：生成器，映射网络，样式编码，判别器<br>
+<img src="https://04lm40.github.io//post-images/1609923510000.png" alt="" loading="lazy"><br>
+<strong>生成器</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>s</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">G(x,s)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">G</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">s</span><span class="mclose">)</span></span></span></span>，输入图像<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>，域特定样式编码<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>（来自映射网络F，或样式编码器E）。使用AdaIN注射<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>到G。s消除了域标签的必要性。<br>
+<img src="https://04lm40.github.io//post-images/1609932110003.png" alt="" loading="lazy"><br>
+<strong>映射网络</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi>F</mi><mi>y</mi></msub><mo>(</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s=F_{y}(z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>，F是一个MLP，有多个输出，对应提供多个域的样式编码。无像素级和特征级归一化。<br>
+<img src="https://04lm40.github.io//post-images/1609924873028.png" alt="" loading="lazy"><br>
+<strong>样式编码</strong>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><msub><mi>E</mi><mi>y</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">s=E_{y}(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，x是参考图像。<br>
+<strong>判别器</strong>：一个多任务判别器，可以转换全局结构。与样式编码结构同，如下：<br>
+<img src="https://04lm40.github.io//post-images/1609924957556.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：对抗损失，样式重构，样式多样，保留原特征（循环一致）<br>
+<img src="https://04lm40.github.io//post-images/1609925584947.png" alt="" loading="lazy"><br>
+<strong>对抗损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925450158.png" alt="" loading="lazy"><br>
+<strong>样式重构</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925468888.png" alt="" loading="lazy"><br>
+<strong>样式多样</strong>：最大化下式<br>
+<img src="https://04lm40.github.io//post-images/1609925510032.png" alt="" loading="lazy"><br>
+<strong>保留原特征</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609925529794.png" alt="" loading="lazy"><br>
+<strong>数据集</strong>：CelebA-HQ， AFHQ<br>
+<strong>评估指标</strong>：FID，LPIPS，AMT<br>
+<strong>效果</strong>：可以合成反映参考图像不同风格的图像，包括发型，化妆，胡须和年龄，而不损害源特征。结果图像跟随参考图像的品种和头发，保持源图像的姿态。<br>
+<strong>对比方法</strong>：MUNIT，DRIT，MSGAN。缺点：对比方法缺乏多样性，遭受模式崩溃，且很难改变全局上的特征。<br>
+<strong>讨论StarGAN V2成功的原因</strong>：<br>
+（1）遵循StyleGAN的洞察力，我们的风格空间是由高斯分布的非线性变换产生的。与假设固定的先验分布相比，这为我们的模型提供了更多的灵活性。<br>
+（2）样式编码是由多分支编码器和映射网络单独生成的。通过这样做，我们的生成器只能专注于使用样式编码，它的特定领域的信息已经由编码器或映射网络处理。<br>
+（3）我们的模块受益于充分利用来自多个领域的训练数据。通过设计，每个模块的共享部分应该学习区域不变特征，从而产生正则化效果鼓励对未见样本进行更好的泛化。<br>
+<img src="https://04lm40.github.io//post-images/1609932009010.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-crossnet-latent-cross-consistency-for-unpaired-image-translation/">
+              <h3 class="post-title">
+                阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '313f4a57a834ad08923d',
+    clientSecret: '2c7619859d342e28e337f4fade597552943e83ff',
+    repo: '04lm40.github.io',
+    owner: '04lm40',
+    admin: ['04lm40'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

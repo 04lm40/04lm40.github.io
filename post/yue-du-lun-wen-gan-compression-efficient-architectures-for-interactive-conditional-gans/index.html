@@ -1,0 +1,219 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1616403909201">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="GAN Compression，知识蒸馏，CVPR2020.
+代码：https://github.com/mit-han-lab/gan-compression
+问题:边缘设备内存少，计算慢。不能用CNN压缩方法原因：1.GAN训练不稳定。..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1616403909201" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://04lm40.github.io/post/about-me" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-22
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>GAN Compression，知识蒸馏，CVPR2020.<br>
+代码：<a href="https://github.com/mit-han-lab/gan-compression">https://github.com/mit-han-lab/gan-compression</a><br>
+<strong>问题</strong>:边缘设备内存少，计算慢。不能用CNN压缩方法原因：1.GAN训练不稳定。2.生成器结构不同。<br>
+<strong>损失</strong>：重构、对抗、蒸馏。<br>
+<strong>统一未配对和配对数据</strong>：即重构损失里（L1-norm），有监督用GT，而无监督用生成器的输出，分别与学生生成器的输出计算像素级差值。<br>
+<strong>继承教师判别器</strong>：仍使用教师判别器里的权重，并与学生生成器一起fine-tune学生判别器。随机初始化判别器会导致训练不稳定及图像质量下降等问题。<br>
+<strong>中间特征蒸馏</strong>：匹配教师生成器的中间表征，其中，G()学生生成器，G'()教师生成器，f卷积层（1x1）。<br>
+<img src="https://04lm40.github.io//post-images/1608627024815.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608627237122.png" alt="" loading="lazy"><br>
+<strong>卷积分解和层灵敏度</strong>：采用卷积的分解形式（depthwise+pointwise）。然而直接用分解卷积会伤害图像质量，且层敏感度也不一样。因此，文中只分解resBlock层。<br>
+<strong>NAS自动裁剪通道</strong>：采用通道剪枝，减少通道数。每个卷积层从8的倍数中选取。<br>
+<strong>解耦训练和搜索</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608627805239.png" alt="" loading="lazy"><br>
+首先训练一个支持不同通道数量的&quot;once-for-all&quot;网络。不同通道数量的每个子网络都受到同样的训练，可以独立操作。子网络与“once-for-all”网络共享权重。<br>
+<img src="https://04lm40.github.io//post-images/1608628605209.png" alt="" loading="lazy"><br>
+在每个训练步骤中，我们随机抽取具有一定通道数配置的子网络，计算输出和梯度，并使用我们的目标函数更新提取的权重。由于前几个通道的权重更新更频繁，它们在所有权重中起着更关键的作用。在“once-for-all”网络训练后，我们通过直接评估每个候选子网络在验证集上的性能来找到最佳的子网络。由于“once-for-all”网络是通过权值共享进行彻底训练的，因此不需要微调。 这近似于模型从零开始训练时的性能。这样，我们就可以解耦生成器体系结构的训练和搜索：我们只需要训练一次，但我们可以在不需要进一步训练的情况下评估所有可能的通道配置然后选择最好的一个作为搜索结果。 可选地，我们对选定的体系结构进行微调，以进一步提高性能。<br>
+<strong>实验</strong>：模型：CycleGAN、pix2pix、GauGAN。数据集：Edges2shoes、Cityscapes、horse2zebra、map2aerial photo。<br>
+<img src="https://04lm40.github.io//post-images/1608629014800.png" alt="" loading="lazy"><br>
+<strong>硬件</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1608629114337.png" alt="" loading="lazy"><br>
+<strong>消融</strong>：无监督到有监督转换的优势，中间特征蒸馏和继承教师生成器的有效性，分解卷积的有效性。<br>
+<strong>未来方向</strong>：降低模型延迟和高效的生成视频模型架构。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/xiang-shui/">
+              <h3 class="post-title">
+                香水
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '313f4a57a834ad08923d',
+    clientSecret: '2c7619859d342e28e337f4fade597552943e83ff',
+    repo: '04lm40.github.io',
+    owner: '04lm40',
+    admin: ['04lm40'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1616403909201">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="知识蒸馏，ECCV2020.
+问题：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。
+假设：相同语义类别的..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1616403909201" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://04lm40.github.io/post/about-me" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-04
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>知识蒸馏，ECCV2020.<br>
+<strong>问题</strong>：GAN参数多，训练时间长。比如CycleGAN模型在Intel(R)Xeon(R) E5-2686的单个CPU上需要2.69秒来处理一幅分辨率为256x256的图像，模型为44M大。<br>
+<strong>假设</strong>：相同语义类别的特征像素有相似的激活样式，不同语义类别的特征像素不同。<br>
+<img src="https://04lm40.github.io//post-images/1607072716913.png" alt="" loading="lazy"><br>
+<strong>Vanilla知识蒸馏</strong>：最小化GT和学生输出，最小化教师输出和学生输出。<br>
+<img src="https://04lm40.github.io//post-images/1607073235185.png" alt="" loading="lazy"><br>
+GAN里用知识蒸馏的一个方法：在教师生成和学生生成之间引入另一个极大极小问题。<br>
+<img src="https://04lm40.github.io//post-images/1607085854448.png" alt="" loading="lazy"><br>
+但这种方式没有提升性能，且训练困难、不稳定。所以考虑只在循环一致性损失，L1 norm上加入蒸馏损失。即：<br>
+<img src="https://04lm40.github.io//post-images/1607086056979.png" alt="" loading="lazy"><br>
+<strong>语义保留蒸馏损失</strong>：生成器由编码器和生成部分组成，语义关系激活矩阵A由特征编码F的外积表示。然后进行逐行L2归一化。<br>
+<img src="https://04lm40.github.io//post-images/1607087478224.png" alt="" loading="lazy"><br>
+语义保留蒸馏损失即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mi>t</mi></msub><mi mathvariant="normal">和</mi><msub><mi>A</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">A_{t}和A_{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">s</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的L1 norm的值。<br>
+总损失：<br>
+<img src="https://04lm40.github.io//post-images/1607087704034.png" alt="" loading="lazy"><br>
+<strong>结构</strong>：教师网络和学生网络同结构但不同通道数，narrow。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/chen-nian-lie-gou/">
+              <h3 class="post-title">
+                陈年烈苟
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '313f4a57a834ad08923d',
+    clientSecret: '2c7619859d342e28e337f4fade597552943e83ff',
+    repo: '04lm40.github.io',
+    owner: '04lm40',
+    admin: ['04lm40'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

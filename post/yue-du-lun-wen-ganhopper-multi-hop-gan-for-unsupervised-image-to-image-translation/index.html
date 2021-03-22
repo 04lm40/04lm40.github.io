@@ -1,0 +1,211 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1616403909201">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="GANHOPPER，无监督，ECCV2020。
+问题：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再几..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1616403909201" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://04lm40.github.io/post/about-me" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：GANHOPPER: Multi-Hop GAN for Unsupervised Image-to-Image Translation
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-03
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/r3_ZWl9OJ/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>GANHOPPER，无监督，ECCV2020。<br>
+<strong>问题</strong>：模型常解决的是局部和风格的转换，而几何和形状偏差大的不太行。因此考虑限制和引导翻译过程，逐步跨越领域。狗-&gt;猫的4-hop为例，比如最开始完全像狗，一步后25%像猫75%像狗，再几步后，完全像猫。<br>
+<strong>相关工作</strong>：以前的解决几何变形的方法是风格-内容、尺度分离、特征解缠等。而本文仅在图像空间。<br>
+<strong>结构</strong>：CycleGAN的两个生成器G、F，判别器<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>Y</mi></msub><mi mathvariant="normal">、</mi><msub><mi>D</mi><mi>X</mi></msub><mi mathvariant="normal">和</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi mathvariant="normal">新</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">混</mi><mi mathvariant="normal">合</mi><mi mathvariant="normal">鉴</mi><mi mathvariant="normal">别</mi><mi mathvariant="normal">器</mi><msub><mi>D</mi><mi>H</mi></msub></mrow><annotation encoding="application/x-tex">D_{Y}、D_{X}和一个新的混合鉴别器D_{H}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.22222em;">Y</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">、</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.07847em;">X</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">和</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">混</span><span class="mord cjk_fallback">合</span><span class="mord cjk_fallback">鉴</span><span class="mord cjk_fallback">别</span><span class="mord cjk_fallback">器</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<br>
+<img src="https://04lm40.github.io//post-images/1606998404872.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1606999066821.png" alt="" loading="lazy"><br>
+循环一致性损失：与CycleGAN不同，论文里是指<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mi>n</mi></msub><mi mathvariant="normal">经</mi><mi mathvariant="normal">过</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">个</mi><mi>F</mi><mi mathvariant="normal">等</mi><mi mathvariant="normal">于</mi><mi mathvariant="normal">后</mi><mi mathvariant="normal">退</mi><mi mathvariant="normal">一</mi><mi mathvariant="normal">步</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">即</mi><msub><mi>G</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">G_{n}经过一个F等于后退一步，即G_{n-1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">过</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">个</span><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="mord cjk_fallback">等</span><span class="mord cjk_fallback">于</span><span class="mord cjk_fallback">后</span><span class="mord cjk_fallback">退</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">步</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">即</span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>。反之亦然。<br>
+<img src="https://04lm40.github.io//post-images/1606999297916.png" alt="" loading="lazy"><br>
+对抗损失：LSGAN，针对每个hop生成的图像。<br>
+Hybrid loss：评估属于某个域的程度，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mi>n</mi></msub><mi mathvariant="normal">目</mi><mi mathvariant="normal">标</mi><mi mathvariant="normal">分</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">为</mi><mi>n</mi><mi mathvariant="normal">/</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">G_{n}目标分数为n/h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord cjk_fallback">目</span><span class="mord cjk_fallback">标</span><span class="mord cjk_fallback">分</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">为</span><span class="mord mathdefault">n</span><span class="mord">/</span><span class="mord mathdefault">h</span></span></span></span>。<br>
+<img src="https://04lm40.github.io//post-images/1606999583088.png" alt="" loading="lazy"><br>
+Smoothness loss：惩罚n和n-1 hop之间的差异，使每次变化较小，最终完整。L1 norm。<br>
+<strong>训练过程</strong>：每次hop都是同一个生成器。算法如图：<br>
+<img src="https://04lm40.github.io//post-images/1606999845996.png" alt="" loading="lazy"><br>
+<strong>Future work</strong>：自动学习hop数。所有hop使用同样的G，能否在考虑内存的情况下改进。与多模态结合。将hop信息one-hot编码作为生成器的输入。生成在给定图像域之外的有意义的extrapolation sequences，以产生创造性和新颖的输出。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/neural-yue-du-lun-wen-wireframe-renderer-learning-wireframe-to-image-translations/">
+              <h3 class="post-title">
+                阅读论文：Neural Wireframe Renderer: Learning Wireframe to Image Translations
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '313f4a57a834ad08923d',
+    clientSecret: '2c7619859d342e28e337f4fade597552943e83ff',
+    repo: '04lm40.github.io',
+    owner: '04lm40',
+    admin: ['04lm40'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
