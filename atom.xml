@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2021-03-29T01:59:52.311Z</updated>
+    <updated>2021-03-29T02:24:00.677Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -15,18 +15,18 @@
         <id>https://04lm40.github.io/post/yue-du-lun-wen-cr-gan-learning-complete-representations-for-multi-view-generation/</id>
         <link href="https://04lm40.github.io/post/yue-du-lun-wen-cr-gan-learning-complete-representations-for-multi-view-generation/">
         </link>
-        <updated>2021-03-26T11:14:09.000Z</updated>
+        <updated>2021-03-29T02:21:50.000Z</updated>
         <content type="html"><![CDATA[<p>CR-GAN，多视角，自监督，2018<br>
 <strong>代码</strong>：<a href="https://github.com/bluer555/CR-GAN">https://github.com/bluer555/CR-GAN</a><br>
 <strong>多域图像生成的挑战</strong>：1）计算机需要想象3D旋转后的样子。2）多域生成需要保留共性。<br>
 <strong>单通道设计的问题</strong>：1）仅学习不完整的表征。2）对“看不见的”或无约束的数据产生有限的泛化能力。<br>
 <strong>单路和CR-GAN</strong>：单路仅是Z的一个子空间。没见过的就生成的不好。<br>
-<img src="https://04lm40.github.io//post-images/1616980524267.png" alt="" loading="lazy"><br>
+<img src="https://04lm40.github.io//post-images/1616984590633.png" alt="" loading="lazy"><br>
 <strong>生成路径</strong>：训练G和D。E不参与。G学习如何从隐空间中的任意输入生成真实图像。<br>
 <strong>重构路径</strong>：训练E和D，保持G固定。G保留生成能力。<br>
-<img src="https://04lm40.github.io//post-images/1616762575270.png" alt="" loading="lazy"><br>
+<img src="https://04lm40.github.io//post-images/1616984604250.png" alt="" loading="lazy"><br>
 <strong>自监督学习</strong>：关键思想是使用预先训练的模型来估计未标记图像的视点。在第一阶段，对标记数据进行网络预训练，使E成为一个很好的视图估计器。在第二阶段，同时使用已标记和未标记的数据来提高G。<br>
-<img src="https://04lm40.github.io//post-images/1616762815298.png" alt="" loading="lazy"><br>
+<img src="https://04lm40.github.io//post-images/1616984617359.png" alt="" loading="lazy"><br>
 优点：1)它为视点估计提供了一个更好的预训练模型作为副产品；2)它保证了我们可以在训练中充分利用未标记的数据，因为CR-GAN学习完整表征。<br>
 <strong>对比方法</strong>：BiGAN，DR-GAN，TP-GAN<br>
 <strong>数据集</strong>： Multi-PIE，300wLP， CelebA，IJB-A</p>
