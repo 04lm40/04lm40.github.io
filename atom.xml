@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2021-03-29T02:24:00.677Z</updated>
+    <updated>2021-03-29T09:38:10.218Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://04lm40.github.io/images/avatar.png</logo>
     <icon>https://04lm40.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 不吃萝卜</rights>
+    <entry>
+        <title type="html"><![CDATA[阅读论文：Three-view generation based on a single front view image for car]]></title>
+        <id>https://04lm40.github.io/post/yue-du-lun-wen-three-view-generation-based-on-a-single-front-view-image-for-car/</id>
+        <link href="https://04lm40.github.io/post/yue-du-lun-wen-three-view-generation-based-on-a-single-front-view-image-for-car/">
+        </link>
+        <updated>2021-03-29T02:44:27.000Z</updated>
+        <content type="html"><![CDATA[<p>多视角，2020<br>
+<strong>问题</strong>:输入图像没有包含足够的像素信息时，生成的图像质量不佳。<br>
+<strong>流程</strong>：粗粒度视图生成（信息约束网络）---&gt;细粒度视图生成<br>
+<img src="https://04lm40.github.io//post-images/1616988547379.png" alt="" loading="lazy"><br>
+<strong>信息约束网络</strong>：三个端到端生成网络（编解码网络）：左视角生成，顶视角生成，前视角生成。相互约束。<br>
+<img src="https://04lm40.github.io//post-images/1617005022811.png" alt="" loading="lazy"><br>
+<strong>损失函数</strong>：L1和感知损失<br>
+<img src="https://04lm40.github.io//post-images/1617005162226.png" alt="" loading="lazy"><br>
+<strong>改进视角生成</strong>：<br>
+<strong>大像素块表征</strong>：在缩放过程中，使用最近邻插值对粗糙视图进行缩放，使粗糙视图中的一些模糊像素与其他像素合并成一个大像素块。128×128--&gt;16×16--&gt;128×128(每行16个大像素块)<br>
+<img src="https://04lm40.github.io//post-images/1617008324687.png" alt="" loading="lazy"><br>
+<strong>细化网络</strong>：pix2pix，判别器最后一层改全连接层，LS loss。<br>
+<img src="https://04lm40.github.io//post-images/1617008781306.png" alt="" loading="lazy"><br>
+<strong>损失函数</strong>：系数：100，0.06<br>
+<img src="https://04lm40.github.io//post-images/1617009202064.png" alt="" loading="lazy"><br>
+<strong>大像素块迁移</strong>：我们将一些大像素块从训练集迁移到测试集，以提高视觉效果。SSIM用于从训练集中找到最接近大像素块视图A的大像素块视图B，然后根据颜色差异将合格的大像素块从B迁移到A。<br>
+<img src="https://04lm40.github.io//post-images/1617009598712.png" alt="" loading="lazy"><br>
+<strong>数据集</strong>：ShapeNet中的车类。<br>
+<strong>对比方法</strong>：L1，AFN,TVSN,TBN<br>
+<strong>合成点云外壳</strong>：我们找到了三视图的最小包彩色图像<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>C</mi><mi>i</mi></msub><mo>(</mo><mi>i</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">C_{i}(i=0,1,2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span>和相应的二进制图像<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>B</mi><mi>i</mi></msub><mo>(</mo><mi>i</mi><mo>=</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">B_{i}(i=0,1,2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05017em;">B</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.05017em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span>，并使用它们来构建一个点云壳。<br>
+<img src="https://04lm40.github.io//post-images/1617010441557.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[阅读论文：CR-GAN: Learning Complete Representations for Multi-view Generation]]></title>
         <id>https://04lm40.github.io/post/yue-du-lun-wen-cr-gan-learning-complete-representations-for-multi-view-generation/</id>
@@ -227,29 +256,6 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg><
 <strong>实验</strong>：语义图-真实图（Cityscapes），斑马-马等等。学生生成器大概为1/2或1/4的教师生成器的通道数即可。<br>
 <strong>定量</strong>：FCN-scores（Per-pixel acc. &amp;Per-class acc. &amp;Class IOU）<br>
 <strong>消融</strong>：探讨损失的影响。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation]]></title>
-        <id>https://04lm40.github.io/post/yue-du-lun-wen-two-stream-appearance-transfer-network-for-person-image-generation/</id>
-        <link href="https://04lm40.github.io/post/yue-du-lun-wen-two-stream-appearance-transfer-network-for-person-image-generation/">
-        </link>
-        <updated>2020-12-11T07:13:09.000Z</updated>
-        <content type="html"><![CDATA[<p>2s-ATN，有监督，arxiv, 2011.04181v1.<br>
-<strong>问题</strong>：由于CNN是由空间局部算子和翻译等变量算子组成的（卷积、池化等），它们没有明确的机制去解决身体关节变形。以前的解决方式有两种：1.参数几何变换，如用仿射变换，但不能处理遮挡或平面外旋转问题。2.非参数密集流，但流场也是由CNN预测的，它不能解释大的或非局部的移动。<br>
-<strong>2s-ATN</strong>：<br>
-<img src="https://04lm40.github.io//post-images/1607671836019.png" alt="" loading="lazy"><br>
-<strong>外观转换模块（AT-module）</strong>:<br>
-<img src="https://04lm40.github.io//post-images/1607671926123.png" alt="" loading="lazy"><br>
-两流特征融合模块：实验得在该网络下用concatenation比sum好。<br>
-<strong>损失</strong>：对抗损失，L1-norm，感知损失（conv1_2 layer）<br>
-<strong>判别器</strong>:外观判别器和形状判别器。<br>
-外观判别器决定（source image，target image）和（source image，generated image）的真/假。<br>
-形状判别器决定（target pose，target image）和（target pose，generated image）真/假。<br>
-<strong>数据集</strong>：Market-1501（263632，12000）和DeepFashion（101966，8750）。<br>
-<strong>指标</strong>：SSIM，IS，Mask-SSIM，Mask-IS，PCKh score（形状一致性）。<br>
-<strong>消融</strong>：AT-module的影响，两流特征融合模块的影响，AT-blocks的数量的影响（9最佳）。</p>
-<p>PCKh score：Progressive pose attention transfer for person image generation</p>
 ]]></content>
     </entry>
 </feed>
