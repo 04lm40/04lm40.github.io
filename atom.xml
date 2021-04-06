@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2021-04-06T02:30:51.398Z</updated>
+    <updated>2021-04-06T07:08:13.943Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -62,7 +62,7 @@ c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg><
 <font color=#0000ff>  <strong>动画：时间一致性</strong> </font><br>
 <strong>运动提取网络</strong>：解决不精确运动的问题。<img src="https://04lm40.github.io//post-images/1617275986378.png" alt="" loading="lazy"><strong>损失</strong>：mean per-joint position error(MPJPE)<br>
 <strong>顺序GFLA模型</strong>：视频剪辑以循环方式生成：先前生成的帧用作当前生成步骤的输入。<br>
-<img src="https://04lm40.github.io//post-images/1617450944053.png" alt="" loading="lazy"><br>
+<img src="https://04lm40.github.io//post-images/1617692830236.png" alt="" loading="lazy"><br>
 <strong>数据集</strong>： Market-1501，DeepFashion， FashionVideo，iPER<br>
 <strong>评估指标</strong>：FID，LPIPS，JND，FID-Video，AED<br>
 <strong>其他应用</strong>：新视角合成（ShapeNet中的车和椅子）；人脸图像动画。<br>
