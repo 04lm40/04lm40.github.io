@@ -1,0 +1,185 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks | Gridea</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1632919560250">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks | Gridea - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="MSG-GAN，高分辨率图像生成，训练策略。
+代码：https://github.com/akanimax/msg-stylegan-tf
+问题：1.模式崩溃（当生成器网络仅能够捕获数据分布中存在方差的子集时，就会发生模式坍塌的问题。）。2..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1632919560250" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-28
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/3LGwcg2va/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>MSG-GAN，高分辨率图像生成，训练策略。<br>
+<strong>代码</strong>：<a href="https://github.com/akanimax/msg-stylegan-tf">https://github.com/akanimax/msg-stylegan-tf</a><br>
+<strong>问题</strong>：1.模式崩溃（当生成器网络仅能够捕获数据分布中存在方差的子集时，就会发生模式坍塌的问题。）。2.<strong>训练不稳定</strong>（由于当真实和虚假的分布空间之间存在实质性的重叠时，从判别器到生成器的随机（非信息性）梯度传递导致的）。<br>
+<strong>优势</strong>：解决GAN训练不稳定的问题。避免跨多尺度生成的图像需要显式的颜色一致性正则化项（多尺度下一般是需要的）。对超参数不敏感。<br>
+<strong>架构</strong>：应用于两个基本架构ProGAN和Style-GAN（除混合正则化）。<br>
+<img src="https://04lm40.github.io//post-images/1609163468813.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：ProGAN（WGAN-GP）和Style-GAN（1-sided GP的非饱和GAN损失）<br>
+<strong>实验细节</strong>：使用相同的初始潜在维数 512，从标准正态分布 N（0，I）提取，然后进行超球面归一化。超参数相同（lr=0.003）。还扩展了MinBatchStdDev 技术，将一批激活的平均标准偏差馈送到判别器，以改善样本多样性。<br>
+<strong>结果</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609163829200.png" alt="" loading="lazy"><br>
+<strong>稳定性</strong>：对所有分辨率均收敛，在每种分辨率下同时发生训练迭代。具有高稳定性，有助于压缩训练时间。<br>
+<img src="https://04lm40.github.io//post-images/1609163887077.png" alt="" loading="lazy"><br>
+<strong>学习率鲁棒性</strong>：学习率并不很大的影响。<br>
+<strong>消融</strong>：多尺度梯度连接，连接函数的变体。<br>
+<strong>局限和未来工作</strong>：1.使用渐进式训练，以较低的分辨率进行的第一组迭代要快得多，而 MSG-GAN 的每次迭代花费的时间相同。2.在 FFHQ 和 CelebA-HQ 的面部数据集上，我们没有超过 StyleGAN 的生成质量。3.在 MSG-StyleGAN 中进行了多尺度修改，无法利用混合正则化技巧。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-gan-compression-efficient-architectures-for-interactive-conditional-gans/">
+              <h3 class="post-title">
+                阅读论文：GAN Compression: Efficient Architectures for Interactive Conditional GANs
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,194 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation | Gridea</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1632919560250">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation | Gridea - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="CrossNet，无监督，WACV2020.
+问题:无监督需要的监督信息少，但会使翻译问题高度受限；模式崩溃等问题。
+架构：Resnet-9block，隐代码翻译器是9 residual blocks。
+
+损失：
+
+Latent Cross..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1632919560250" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：CrossNet: Latent Cross-Consistency for Unpaired Image Translation
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-01-04
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/3LGwcg2va/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>CrossNet，无监督，WACV2020.<br>
+<strong>问题</strong>:无监督需要的监督信息少，但会使翻译问题高度受限；模式崩溃等问题。<br>
+<strong>架构</strong>：Resnet-9block，隐代码翻译器是9 residual blocks。<br>
+<img src="https://04lm40.github.io//post-images/1609746734616.png" alt="" loading="lazy"><br>
+<strong>损失</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746895444.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Identity Loss</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1609746981364.png" alt="" loading="lazy"><br>
+可见示意图(a)。另外，仿照普通的identity loss（无cross），加入下式损失：<br>
+<img src="https://04lm40.github.io//post-images/1609747153604.png" alt="" loading="lazy"><br>
+<strong>Latent Cross-Translation Consistency</strong>：可见示意图(b)<br>
+<img src="https://04lm40.github.io//post-images/1609747267836.png" alt="" loading="lazy"><br>
+<strong>Latent Cycle-Consistency</strong>：保证双向，避免崩溃，可见示意图(c)<br>
+<img src="https://04lm40.github.io//post-images/1609747663833.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：另，对抗损失是LSGAN。<br>
+<img src="https://04lm40.github.io//post-images/1609747707866.png" alt="" loading="lazy"><br>
+<strong>消融</strong>：各种损失<br>
+<img src="https://04lm40.github.io//post-images/1609747807778.png" alt="" loading="lazy"><br>
+<strong>任务</strong>：苹果-橘子，夏天-冬天，马-斑马，镜面-漫射，手机-单反，语义前景提取。<br>
+<strong>未来工作</strong>：本文的所有损失是对称约束，但在某些任务中非对称约束更合适。</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-msg-gan-multi-scale-gradients-for-generative-adversarial-networks/">
+              <h3 class="post-title">
+                阅读论文：MSG-GAN: Multi-Scale Gradients for Generative Adversarial Networks
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

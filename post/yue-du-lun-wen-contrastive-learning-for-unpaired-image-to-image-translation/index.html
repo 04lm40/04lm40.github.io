@@ -1,0 +1,187 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：Contrastive Learning for Unpaired Image-to-Image Translation | Gridea</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1632919560250">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：Contrastive Learning for Unpaired Image-to-Image Translation | Gridea - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="CUT，无监督，对比学习，ECCV2020。
+代码：https://github.com/taesungp/contrastive-unpaired-translation
+问题:CycleGAN使用循环一致性保持原内容（结构），但它是基于..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1632919560250" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：Contrastive Learning for Unpaired Image-to-Image Translation
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-05
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/3LGwcg2va/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>CUT，无监督，对比学习，ECCV2020。<br>
+代码：<a href="https://github.com/taesungp/contrastive-unpaired-translation">https://github.com/taesungp/contrastive-unpaired-translation</a><br>
+<strong>问题</strong>:CycleGAN使用循环一致性保持原内容（结构），但它是基于双向映射的假设，这太过限制。因此基于对比学习来最大化两者的互信息。<br>
+<img src="https://04lm40.github.io//post-images/1607156890788.png" alt="" loading="lazy"><br>
+生成器由一个编码器和解码器组成。<br>
+<strong>对抗损失</strong><br>
+<strong>互信息最大化</strong>：使用一个噪声对比估计框架，计算交叉熵损失，表示正例被选择在负上的概率。<br>
+<img src="https://04lm40.github.io//post-images/1607157244440.png" alt="" loading="lazy"><br>
+<strong>多层，分段对比学习</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1607157366744.png" alt="" loading="lazy"><br>
+单张图片内创造负例：<br>
+<img src="https://04lm40.github.io//post-images/1607157510562.png" alt="" loading="lazy"><br>
+<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span></span></span></span>是层数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>是位置数，上式括号里三个分别为输入对应的特征，输出对应特征，和输入不对应特征。<br>
+数据集内创造负例：<br>
+<img src="https://04lm40.github.io//post-images/1607157988236.png" alt="" loading="lazy"><br>
+<strong>总损失</strong>：系数为1，1的时候是CUT，效果好。而10，0时是FastCUT，轻量级。<br>
+<img src="https://04lm40.github.io//post-images/1607158238420.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-semantic-relation-preserving-knowledge-distillation-for-image-to-image-translation/">
+              <h3 class="post-title">
+                阅读论文：Semantic Relation Preserving Knowledge Distillation for Image-to-Image Translation
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
