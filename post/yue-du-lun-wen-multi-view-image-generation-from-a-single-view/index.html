@@ -1,0 +1,188 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>阅读论文：Multi-View Image Generation from a Single-View | 不吃萝卜</title>
+<link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1633092509149">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：Multi-View Image Generation from a Single-View | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="VariGANs，多视角，2018
+问题：VAE轮廓可以，细节不行。GAN细节真实，但引入伪影。以往的方法只能合成刚性物体（车，椅子等），对于复杂和需要变形的物体较为困难。
+解决方法：变分推理+对抗训练。coarse-to-fine：LR捕..." />
+    <meta name="keywords" content="论文阅读" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://04lm40.github.io/">
+  <img class="avatar" src="https://04lm40.github.io//images/avatar.png?v=1633092509149" alt="">
+  </a>
+  <h1 class="site-title">
+    不吃萝卜
+  </h1>
+  <p class="site-description">
+    想要成为dancing machine
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              阅读论文：Multi-View Image Generation from a Single-View
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-03-26
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+                <a href="https://04lm40.github.io/tag/3LGwcg2va/" class="post-tag">
+                  # 论文阅读
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>VariGANs，多视角，2018<br>
+<strong>问题</strong>：VAE轮廓可以，细节不行。GAN细节真实，但引入伪影。以往的方法只能合成刚性物体（车，椅子等），对于复杂和需要变形的物体较为困难。<br>
+<strong>解决方法</strong>：变分推理+对抗训练。coarse-to-fine：LR捕获全局外观（形状，颜色），再根据对抗学习生成细节丰富的HR图像。<br>
+<strong>目标函数</strong>：<br>
+<img src="https://04lm40.github.io//post-images/1616748250422.png" alt="" loading="lazy"><br>
+粗糙的图像生成器：<br>
+<img src="https://04lm40.github.io//post-images/1616748651032.png" alt="" loading="lazy"><br>
+细粒度的图像生成器：<br>
+<img src="https://04lm40.github.io//post-images/1616749009725.png" alt="" loading="lazy"><br>
+<strong>网络</strong>：粗糙的图像生成器，细粒度的图像生成器，条件判别器<br>
+<img src="https://04lm40.github.io//post-images/1616747250914.png" alt="" loading="lazy"><br>
+训练时有目标图像，测试时没有，随机采样z。<br>
+编码器：Siamese-like，权值共享。<br>
+LR图像编码器和HR图像解码器，条件图像编码器和HR图像解码器：跳跃连接。<br>
+<img src="https://04lm40.github.io//post-images/1616750207040.png" alt="" loading="lazy"><br>
+<strong>数据集</strong>：MVC，DeepFashion<br>
+<strong>对比方法</strong>: Conditional VAE (cVAE) and Conditional GANs (cGANs)<br>
+<strong>指标</strong>：SSIM，IS</p>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-stargan-v2-diverse-image-synthesis-for-multiple-domains/">
+              <h3 class="post-title">
+                阅读论文：StarGAN v2: Diverse Image Synthesis for Multiple Domains
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://04lm40.github.io//atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
