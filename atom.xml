@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://04lm40.github.io/</id>
     <title>不吃萝卜</title>
-    <updated>2021-10-01T12:55:17.508Z</updated>
+    <updated>2021-10-14T06:24:08.461Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://04lm40.github.io/"/>
     <link rel="self" href="https://04lm40.github.io/atom.xml"/>
@@ -16,7 +16,33 @@
         <link href="https://04lm40.github.io/post/yue-du-lun-wen-taming-transformers-for-high-resolution-image-synthesis/">
         </link>
         <updated>2021-07-06T08:24:51.000Z</updated>
-        <content type="html"><![CDATA[<p>VQGAN，transformer+GAN</p>
+        <content type="html"><![CDATA[<p>VQGAN，transformer+GAN<br>
+<strong>代码</strong>：<a href="https://compvis.github.io/taming-transformers/">https://compvis.github.io/taming-transformers/</a><br>
+<strong>问题</strong>：卷积只是局部信息，transformer有长依赖关系，但没办法计算高分辨率图像。于是考虑两者结合。<br>
+<strong>模型与架构</strong>：<br>
+流程：使用卷积方法来有效地学习上下文丰富的视觉部分的codebook，然后，学习它们的全局组成的模型。<br>
+<img src="https://04lm40.github.io//post-images/1634130317200.png" alt="" loading="lazy"></p>
+<p><img src="https://04lm40.github.io//post-images/1634131099144.png" alt="" loading="lazy"><br>
+判别器：PatchGAN。<br>
+<strong>学习codebook</strong>：<br>
+图像x先经过编码器E，得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>z</mi><mo stretchy="true">^</mo></mover></mrow><annotation encoding="application/x-tex">\widehat{z}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.67056em;vertical-align:0em;"></span><span class="mord accent"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.67056em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span></span></span><span class="svg-align" style="width:calc(100% - 0.11112em);margin-left:0.11112em;top:-3.43056em;"><span class="pstrut" style="height:3em;"></span><span style="height:0.24em;"><svg width='100%' height='0.24em' viewBox='0 0 1062 239' preserveAspectRatio='none'><path d='M529 0h5l519 115c5 1 9 5 9 10 0 1-1 2-1 3l-4 22
+c-1 5-5 9-11 9h-2L532 67 19 159h-2c-5 0-9-4-11-9l-5-22c-1-6 2-12 8-13z'/></svg></span></span></span></span></span></span></span></span></span>，然后经过逐元素的量化：<br>
+<img src="https://04lm40.github.io//post-images/1634134091881.png" alt="" loading="lazy"><br>
+最后经过解码器G，得到生成图像。<br>
+损失：<br>
+<img src="https://04lm40.github.io//post-images/1634134393379.png" alt="" loading="lazy"><br>
+sg[]:停止梯度操作。见VQVAE。<br>
+<strong>Learning a Perceptually Rich Codebook</strong>：<br>
+为了学习丰富的codebook，以往的基于L2的重构损失现在替换为感知损失和对抗损失的加权和。<br>
+<img src="https://04lm40.github.io//post-images/1634134631683.png" alt="" loading="lazy"><br>
+<strong>用transformer学习图像组成</strong>：<br>
+量化后的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>z</mi><mi>q</mi></msub></mrow><annotation encoding="application/x-tex">z_{q}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.15139200000000003em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">q</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span></span></span></span>，等价于s在codebook中的索引，即最大似然函数：<br>
+<img src="https://04lm40.github.io//post-images/1634135390323.png" alt="" loading="lazy"><br>
+<strong>实验</strong>：<br>
+能完成有条件的和没有条件的图像合成任务，因此可作为一种统一的图像合成架构。<br>
+<img src="https://04lm40.github.io//post-images/1634135465275.png" alt="" loading="lazy"><br>
+后续：<br>
+CLIP+VQGAN，让CLIP提供文本和作为一个监督信息。</p>
 ]]></content>
     </entry>
     <entry>
