@@ -2,17 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation | 不吃萝卜</title>
+<title>阅读论文：View Independent Generative Adversarial Network for Novel View Synthesis | 不吃萝卜</title>
 <link rel="shortcut icon" href="https://04lm40.github.io//favicon.ico?v=1641440374169">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://04lm40.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
+<link rel="alternate" type="application/atom+xml" title="阅读论文：View Independent Generative Adversarial Network for Novel View Synthesis | 不吃萝卜 - Atom Feed" href="https://04lm40.github.io//atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="2s-ATN，有监督，arxiv, 2011.04181v1.
-问题：由于CNN是由空间局部算子和翻译等变量算子组成的（卷积、池化等），它们没有明确的机制去解决身体关节变形。以前的解决方式有两种：1.参数几何变换，如用仿射变换，但不能处理遮..." />
+    <meta name="description" content="VI-GAN，视角生成，ICCV2019
+问题：该问题一般有两种方法：基于几何的方法和基于学习的方法。
+（1）基于几何的方法一般是先从二维图像推测三维图形，再抓取另一视角的二维图像。然而这种方法本身是 ill-posed的，它只适用于特定场..." />
     <meta name="keywords" content="论文阅读" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -75,11 +76,11 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              阅读论文：Two-Stream Appearance Transfer Network for Person Image Generation
+              阅读论文：View Independent Generative Adversarial Network for Novel View Synthesis
             </h2>
             <div class="post-info">
               <span>
-                2020-12-11
+                2022-01-06
               </span>
               <span>
                 2 min read
@@ -93,21 +94,24 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>2s-ATN，有监督，arxiv, 2011.04181v1.<br>
-<strong>问题</strong>：由于CNN是由空间局部算子和翻译等变量算子组成的（卷积、池化等），它们没有明确的机制去解决身体关节变形。以前的解决方式有两种：1.参数几何变换，如用仿射变换，但不能处理遮挡或平面外旋转问题。2.非参数密集流，但流场也是由CNN预测的，它不能解释大的或非局部的移动。<br>
-<strong>2s-ATN</strong>：<br>
-<img src="https://04lm40.github.io//post-images/1607671836019.png" alt="" loading="lazy"><br>
-<strong>外观转换模块（AT-module）</strong>:<br>
-<img src="https://04lm40.github.io//post-images/1607671926123.png" alt="" loading="lazy"><br>
-两流特征融合模块：实验得在该网络下用concatenation比sum好。<br>
-<strong>损失</strong>：对抗损失，L1-norm，感知损失（conv1_2 layer）<br>
-<strong>判别器</strong>:外观判别器和形状判别器。<br>
-外观判别器决定（source image，target image）和（source image，generated image）的真/假。<br>
-形状判别器决定（target pose，target image）和（target pose，generated image）真/假。<br>
-<strong>数据集</strong>：Market-1501（263632，12000）和DeepFashion（101966，8750）。<br>
-<strong>指标</strong>：SSIM，IS，Mask-SSIM，Mask-IS，PCKh score（形状一致性）。<br>
-<strong>消融</strong>：AT-module的影响，两流特征融合模块的影响，AT-blocks的数量的影响（9最佳）。</p>
-<p>PCKh score：Progressive pose attention transfer for person image generation</p>
+                <p>VI-GAN，视角生成，ICCV2019</p>
+<p><strong>问题</strong>：该问题一般有两种方法：基于几何的方法和基于学习的方法。<br>
+（1）基于几何的方法一般是先从二维图像推测三维图形，再抓取另一视角的二维图像。然而这种方法本身是 ill-posed的，它只适用于特定场景。而且三维的获取很困难。<br>
+（2）基于学习的方法中，GAN通常将相机参数离散为一个固定长度的向量，这会丢失相机参数里的3d信息。</p>
+<p><strong>解决</strong>：在基于学习的方法基础上，隐式地推断出3d知识。即编码器提取代表物体固有属性的view-independent feature，解码器根据特征和指定的相机pose合成图像。</p>
+<p><strong>结构</strong>：编码器，解码器，embedding网络（MD-多层感知机），双判别器。<br>
+<img src="https://04lm40.github.io//post-images/1641439919166.png" alt="" loading="lazy"></p>
+<p>编码器中：为了基于二维图像推断三维相关知识，编码器E需要隐式地将二维图像注册到潜在的三维模型中。在这方面，二维图像的位置信息是重要的。然而，由于空间不变性，CNN只感知局部区域而不考虑位置。因此，利用CoordConv代替传统卷积，通过将像素位置作为两个额外的通道连接到特征映射中来解决这个问题。</p>
+<p><strong>损失</strong>：一个视角独立的损失项、一系列图像重建损失项、一个GAN损失项和一个姿态预测损失项。</p>
+<figure data-type="image" tabindex="1"><img src="https://04lm40.github.io//post-images/1641440000407.png" alt="" loading="lazy"></figure>
+<p><strong>View-independent Loss</strong>：不同视角的同一物体的固有属性特征要一致。</p>
+<figure data-type="image" tabindex="2"><img src="https://04lm40.github.io//post-images/1641440065186.png" alt="" loading="lazy"></figure>
+<p><strong>Image-reconstruction Loss</strong>：针对一次转换&amp;两次转换（循环）的像素损失和感知损失，identity loss。</p>
+<p><strong>GAN Loss</strong>： WGAN-GP.</p>
+<p><strong>Pose Prediction Loss</strong>：利用另一个判别器来姿势预测，确保与目标姿势一致。</p>
+<figure data-type="image" tabindex="3"><img src="https://04lm40.github.io//post-images/1641440133942.png" alt="" loading="lazy"></figure>
+<p><strong>数据集</strong>：ShapeNet, Multi-PIE and 300W-LP。</p>
+<p><strong>实验设置</strong>：消融实验，确定编码的特征是否有3D信息（ 3D face landmark estimation实验：一种是从头训练，一种利用VI-GAN作为预训练），对比实验（离散旋转，连续旋转）</p>
 
               </div>
               <div class="toc-container">
@@ -120,9 +124,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://04lm40.github.io/post/yue-du-lun-wen-instagan-instance-aware-image-to-image-translation/">
+            <a href="https://04lm40.github.io/post/yue-du-lun-wen-taming-transformers-for-high-resolution-image-synthesis/">
               <h3 class="post-title">
-                阅读论文：INSTAGAN: INSTANCE-AWARE IMAGE-TO-IMAGE TRANSLATION
+                阅读论文：Taming Transformers for High-Resolution Image Synthesis
               </h3>
             </a>
           </div>
